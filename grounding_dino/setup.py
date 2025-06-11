@@ -96,6 +96,7 @@ def get_extensions():
             "-gencode=arch=compute_75,code=sm_75",
             "-gencode=arch=compute_80,code=sm_80",
             "-gencode=arch=compute_86,code=sm_86",
+            "-gencode=arch=compute_90,code=sm_90" # RG from https://github.com/IDEA-Research/Grounded-SAM-2/issues/71 to work w the h100
         ]
     else:
         print("Compiling without CUDA")

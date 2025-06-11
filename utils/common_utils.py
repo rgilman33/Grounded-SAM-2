@@ -28,10 +28,13 @@ class CommonUtils:
         CommonUtils.creat_dirs(output_path)
         raw_image_name_list = os.listdir(raw_image_path)
         raw_image_name_list.sort()
+        print("raw image name list", raw_image_name_list)
+        raw_image_name_list = [n for n in raw_image_name_list if ".jpg" in n] # RG bc ipynb checkpoints?
         for raw_image_name in raw_image_name_list:
             image_path = os.path.join(raw_image_path, raw_image_name)
             image = cv2.imread(image_path)
             if image is None:
+                print("no image", image_path)
                 raise FileNotFoundError("Image file not found.")
             # load mask
             mask_npy_path = os.path.join(mask_path, "mask_"+raw_image_name.split(".")[0]+".npy")
